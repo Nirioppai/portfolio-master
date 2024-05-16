@@ -9,7 +9,11 @@ function MainPage() {
       <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
         <Grid container justifyContent='center'>
           <Grid item xs={4}>
-            <Grid container rowSpacing={1}>
+            <Grid
+              container
+              rowSpacing={1}
+              sx={{ position: 'sticky', top: 350 }}
+            >
               <Grid item xs={12}>
                 <Typography
                   component='h1'
@@ -41,8 +45,7 @@ function MainPage() {
 
               <Grid item xs={12}>
                 <Typography paragraph sx={{ mt: 2, maxWidth: 'xs' }}>
-                  I build pixel-perfect, engaging, and accessible digital
-                  experiences.
+                  test test test test
                 </Typography>
               </Grid>
 
