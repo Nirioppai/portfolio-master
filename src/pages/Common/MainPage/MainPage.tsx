@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   Box,
+  Chip,
   Grid,
   Typography,
   Link,
@@ -10,6 +11,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 
 import InfoIcon from '@mui/icons-material/Info';
@@ -22,12 +25,40 @@ import { FadeInComponent } from '../../../components';
 type SectionId = string;
 
 function MainPage() {
+  const [isVisible, setIsVisible] = useState(true);
+  const theme = useTheme();
+  const isLgOrXl = useMediaQuery(theme.breakpoints.up('lg'));
+
   const handleScroll = (sectionId: SectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Github and LinkedIn Icon behaviors
+  useEffect(() => {
+    const handleResize = () => {
+      // Check if the current breakpoint is lg or xl
+      if (!isLgOrXl) return;
+
+      // Define the condition under which the element should be hidden
+      if (window.innerHeight < 600) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Cleanup the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isLgOrXl]);
+
   return (
     <>
       <FadeInComponent>
@@ -141,13 +172,13 @@ function MainPage() {
                       md: 'relative',
                       lg: 'fixed',
                     },
-
                     bottom: {
                       xs: 0,
                       sm: 0,
                       md: 0,
                       lg: 90,
                     },
+                    display: isVisible ? 'block' : 'none', // Conditional display based on state
                   }}
                 >
                   <IconButton>
@@ -191,11 +222,11 @@ function MainPage() {
 
                 <Typography paragraph>
                   My primary focus these days is designing automated test cases
-                  for the development team at DOST - PHIVOLCS. I particularly
-                  enjoy working at the intersection of design and engineering,
-                  where aesthetics meet robust construction. In my free time, I
-                  continually expand my knowledge in the field of quality
-                  assurance.
+                  and implementing the AGILE workflow for the development team
+                  at DOST - PHIVOLCS. I particularly enjoy working at the
+                  intersection of design and engineering, where aesthetics meet
+                  robust construction. In my free time, I continually expand my
+                  knowledge in the field of quality assurance.
                 </Typography>
 
                 <Typography paragraph>
@@ -225,8 +256,34 @@ function MainPage() {
                       marginTop: { xs: 0, sm: 0, md: 0, lg: 19, xl: 19 },
                     }}
                   >
-                    <Typography>2024 - Present</Typography>
-                    <Typography paragraph>2024 - Present</Typography>
+                    <Box>
+                      <Grid container rowSpacing={1}>
+                        <Grid item xs={12} sm={3}>
+                          <Typography>2024 - Present</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={9}>
+                          Senior Frontend
+                        </Grid>
+                        <Grid item xs={12} sm={3}></Grid>
+                        <Grid item xs={12} sm={9}>
+                          <Typography paragraph>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptatum ex quo aliquam expedita nam
+                            debitis, unde obcaecati perspiciatis suscipit autem
+                            eaque ab, quasi ratione maxime voluptatibus.
+                            Similique enim dolorum a?ds
+                          </Typography>
+                          <Chip
+                            sx={{ padding: '3px', marginRight: 1 }}
+                            label='Chip Filled'
+                          />
+                          <Chip
+                            sx={{ padding: '3px', marginRight: 1 }}
+                            label='Chip Filled'
+                          />
+                        </Grid>
+                      </Grid>
+                    </Box>
                   </Box>
                 </Grid>
               </Box>

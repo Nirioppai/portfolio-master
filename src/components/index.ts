@@ -3,5 +3,7 @@ export { default as UserWrapper } from './UserWrapper';
 export { default as PageContentWrapper } from './PageContentWrapper';
 export { default as DeckListTabs } from './DeckListTabs';
 export { default as FadeInComponent } from './FadeInComponent';
+export { default as About } from './About';
+export { default as Experience } from './Experience';
 
 export * from './TabWithContent';
