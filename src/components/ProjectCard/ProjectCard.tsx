@@ -116,7 +116,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             }}
           >
             {title}
-            {company && ` at ${company}`}
+            {company && ` - ${company}`}
           </Typography>
 
           {/* Description */}

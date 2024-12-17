@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Box,
   Grid,
-  Button,
   Typography,
   Link,
   IconButton,
@@ -106,40 +105,85 @@ function MainPage() {
 
   const projects = [
     {
-      backgroundImage:
-        'https://via.placeholder.com/1200x600?text=Project+Image',
-      title: 'Spotify Profile',
+      backgroundImage: '/dynamicpos.png',
+      title: 'Scalable POS',
       description:
-        'Web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track.',
-      link: 'https://spotify-profile-example.com',
+        'A POS gathered for business owners specifically that have multiple businesses that has multiple products they want to use across their businesses, wherein they can share assets, products, stores and cashiers by their fingertips.',
+      link: '#',
       chips: [
         { label: 'React', url: 'https://reactjs.org/' },
-        { label: 'Express', url: 'https://expressjs.com/' },
-        { label: 'Spotify API', url: 'https://developer.spotify.com/' },
-        { label: 'Heroku', url: 'https://www.heroku.com/' },
+        { label: 'Material UI', url: 'https://mui.com/' },
+        { label: 'Firebase', url: 'https://firebase.google.com/' },
       ],
-      timeframe: '2024',
-      company: 'My Portfolio',
+      timeframe: '2023',
+      company: 'Thesis Project',
       carouselImages: [
         {
-          title: 'Image 1',
-          url: 'https://via.placeholder.com/800x400?text=Image+1',
+          title: 'Dynamic POS Screenshot',
+          url: '/dynamicpos.png',
         },
+      ],
+    },
+    {
+      backgroundImage: '/edhevents.png',
+      title: 'EDH Events',
+      description:
+        "A Magic the Gathering Commander Format centric Pairings builder designed for the 4 Player Commander Format. Pairings are based primarily on Upkeep Hobbies' rulings.",
+      link: 'https://edh-pairings.vercel.app/events',
+      chips: [
+        { label: 'Next JS', url: 'https://nextjs.org/' },
+        { label: 'Vercel', url: 'https://vercel.com/' },
+        { label: 'Firebase', url: 'https://firebase.google.com/' },
+      ],
+      timeframe: 'WIP',
+      company: 'Freelance',
+      carouselImages: [
         {
-          title: 'Image 2',
-          url: 'https://via.placeholder.com/800x400?text=Image+2',
+          title: 'EDH Events Screenshot',
+          url: '/edhevents.png',
+        },
+      ],
+    },
+    {
+      backgroundImage: '/facility.png',
+      title: 'Facilities and Equipment Borrowing App',
+      description:
+        'A tracker for facilities and equipment lending for a specific organization in for the Polytechnic University of the Philippines.',
+      link: '#',
+      chips: [
+        { label: 'React', url: 'https://reactjs.org/' },
+        { label: 'Material UI', url: 'https://mui.com/' },
+        { label: 'Firebase', url: 'https://firebase.google.com/' },
+      ],
+      timeframe: '2022',
+      company: 'Freelance',
+      carouselImages: [
+        {
+          title: 'Facilities App Screenshot',
+          url: '/facility.png',
+        },
+      ],
+    },
+    {
+      backgroundImage: '/zzzparty.png',
+      title: 'New Eridu Party Generator',
+      description:
+        'A Personal project of mine to automatically come up with good parties based on the characters I have that refer to the community ratings.',
+      link: 'https://zzz-team-generator.web.app/',
+      chips: [
+        { label: 'React', url: 'https://reactjs.org/' },
+        { label: 'Firebase', url: 'https://firebase.google.com/' },
+      ],
+      timeframe: '2023',
+      company: 'Personal',
+      carouselImages: [
+        {
+          title: 'New Eridu Party Screenshot',
+          url: '/zzzparty.png',
         },
       ],
     },
   ];
-
-  const handleDownload = () => {
-    // Trigger download of resume.pdf from the public directory
-    const link = document.createElement('a');
-    link.href = `${process.env.PUBLIC_URL}/resume.pdf`;
-    link.download = 'resume.pdf';
-    link.click();
-  };
 
   return (
     <>
@@ -293,20 +337,21 @@ function MainPage() {
             <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
               <Box id='about'>
                 <Typography
+                  variant='h4'
+                  component='h1'
                   sx={{
-                    display: {
-                      xs: 'block',
-                      sm: 'block',
-                      md: 'block',
-                      lg: 'none',
-                    },
+                    fontSize: '40px',
+                    fontWeight: 'bold',
+                    lineHeight: 1.2,
                   }}
-                  py={3}
                 >
-                  ABOUT
+                  About
                 </Typography>
 
-                <Typography paragraph>
+                <Typography
+                  sx={{ marginTop: { xs: 9, sm: 9, md: 9, lg: 9, xl: 9 } }}
+                  paragraph
+                >
                   Back in 2018, I was given the opportunity to lead a web
                   development project for Xavier School San Juan as a student,
                   creating their first queueing system for student enrollments.
@@ -335,21 +380,17 @@ function MainPage() {
               </Box>
               <Box id='experience' sx={{ marginTop: 20 }}>
                 <Grid item xs={12}>
-                  <Box>
-                    <Typography
-                      sx={{
-                        display: {
-                          xs: 'block',
-                          sm: 'block',
-                          md: 'block',
-                          lg: 'none',
-                        },
-                      }}
-                      py={3}
-                    >
-                      EXPERIENCE
-                    </Typography>
-                  </Box>
+                  <Typography
+                    variant='h4'
+                    component='h1'
+                    sx={{
+                      fontSize: '40px',
+                      fontWeight: 'bold',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    Experience
+                  </Typography>
 
                   <Experience
                     timeframe='06 2024 - Present'
@@ -479,6 +520,7 @@ function MainPage() {
                     ]}
                   />
                 </Grid>
+
                 <Box
                   display='flex'
                   alignItems='center'
@@ -488,22 +530,45 @@ function MainPage() {
                 >
                   <Typography
                     variant='h6'
-                    sx={{ fontSize: '16px', fontWeight: 'bold' }}
+                    sx={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'color 0.3s ease',
+                      '&:hover': { color: 'primary.main' },
+                    }}
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = '/resume.pdf';
+                      link.target = '_blank';
+                      link.rel = 'noopener noreferrer';
+                      link.click();
+                    }}
                   >
                     View Full Resume
                   </Typography>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    onClick={handleDownload}
-                    sx={{ fontSize: '16px', textTransform: 'none' }}
-                  >
-                    Download
-                  </Button>
                 </Box>
               </Box>
 
-              <Box id='projects' sx={{ marginTop: 10 }}>
+              <Box
+                id='projects'
+                sx={{
+                  marginTop: { xs: 12, sm: 12, md: 12, lg: 12, xl: 12 },
+                }}
+              >
+                <Box>
+                  <Typography
+                    variant='h4'
+                    component='h1'
+                    sx={{
+                      fontSize: '40px',
+                      fontWeight: 'bold',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    Projects
+                  </Typography>
+                </Box>
                 {projects.map((project, index) => (
                   <ProjectCard
                     key={index}
@@ -517,6 +582,41 @@ function MainPage() {
                     carouselImages={project.carouselImages}
                   />
                 ))}
+              </Box>
+
+              <Box id='getintouch' sx={{ marginTop: 15 }}>
+                <Box id='get-in-touch'>
+                  {/* Header */}
+                  <Typography
+                    variant='h4'
+                    component='h1'
+                    sx={{
+                      fontSize: '40px',
+                      fontWeight: 'bold',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    Get in Touch
+                  </Typography>
+                  {/* Description */}
+                  <Typography
+                    sx={{ marginTop: 5, marginBottom: 2 }}
+                    variant='body1'
+                    align='left'
+                  >
+                    Whether you're a developer looking for collaboration, an
+                    employer seeking talent, or someone simply intrigued by my
+                    work, I'd love to hear from you! Feel free to drop a
+                    message. Let’s build, innovate, and make great ideas come to
+                    life together.
+                  </Typography>
+                  {/* Email Link */}
+                  You can contact me at &nbsp;
+                  <Link href='mailto:nicodelrosario0806@gmail.com' align='left'>
+                    nicodelrosario0806@gmail.com
+                  </Link>
+                  .
+                </Box>
               </Box>
             </Grid>
 
