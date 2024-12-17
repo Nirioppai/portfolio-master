@@ -1,67 +1,70 @@
 import React from 'react';
-import { Box, Grid, Typography, Chip } from '@mui/material';
+import { Box, Grid, Typography, Chip, BoxProps } from '@mui/material';
 
-function Experience() {
-  return (
-    <Box id='experience'>
-    <Grid item xs={12}>
-      <Box>
-        <Typography
-          sx={{
-            display: {
-              xs: 'block',
-              sm: 'block',
-              md: 'block',
-              lg: 'none',
-            },
-          }}
-          py={3}
-        >
-          EXPERIENCE
-        </Typography>
-      </Box>
+/**
+ * Interface defining the props for the ExperienceCard component
+ */
+interface ExperienceCardProps extends Omit<BoxProps, 'title'> {
+  /** The timeframe of the experience (e.g., "2024 - Present") */
+  timeframe: string;
 
+  /** The title of the experience */
+  title: string;
 
-      <Box
-        sx={{
-          marginTop: { xs: 0, sm: 0, md: 0, lg: 19, xl: 19 },
-        }}
-      >
-        <Box>
-          <Grid container rowSpacing={1}>
-            <Grid item xs={12} sm={3}>
-              <Typography>2024 - Present</Typography>
-            </Grid>
-            <Grid item xs={12} sm={9}>
-              Position
-            </Grid>
-            <Grid item xs={12} sm={3}></Grid>
-            <Grid item xs={12} sm={9}>
-              <Typography paragraph>
-                Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Voluptatum ex quo aliquam expedita nam
-                debitis, unde obcaecati perspiciatis suscipit autem
-                eaque ab, quasi ratione maxime voluptatibus.
-                Similique enim dolorum a?ds
-              </Typography>
-              <Chip
-                sx={{ padding: '3px', marginRight: 1 }}
-                label='Chip Filled'
-              />
-              <Chip
-                sx={{ padding: '3px', marginRight: 1 }}
-                label='Chip Filled'
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </Box>
-      
+  /** The company of the experience */
+  company: string;
 
+  /** Detailed description of the experience */
+  description: string;
 
-    </Grid>
-  </Box>
-  );
+  /** Optional array of skills or technologies used */
+  chips?: string[];
 }
 
-export default Experience;
+/**
+ * ExperienceCard Component
+ * Displays a card-like layout for professional experiences
+ */
+const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  timeframe,
+  title,
+  company,
+  description,
+  chips = [],
+  ...boxProps
+}) => {
+  return (
+    <Box  sx={{
+      marginTop: { xs: 10, sm: 10, md: 10, lg: 10, xl: 10 },
+    }} {...boxProps}>
+      <Grid container rowSpacing={1}>
+        {/* Timeframe */}
+        <Grid item xs={12} sm={3}>
+          <Typography>{timeframe}</Typography>
+        </Grid>
+        
+        {/* Title */}
+        <Grid item xs={12} sm={9}>
+          <Typography>{title} at {company}</Typography>
+        </Grid>
+        
+        {/* Empty Grid for alignment */}
+        <Grid item xs={12} sm={3}></Grid>
+        
+        {/* Description and Chips */}
+        <Grid item xs={12} sm={9}>
+          <Typography paragraph>{description}</Typography>
+          {chips.map((chipLabel, index) => (
+            <Chip
+              key={index}
+              sx={{ padding: '3px', marginRight: 1 }}
+              label={chipLabel}
+            />
+          ))}
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
+export default ExperienceCard;
