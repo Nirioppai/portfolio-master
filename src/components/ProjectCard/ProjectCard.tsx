@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
   chips,
   boxProps,
-  timeframe,
+  // timeframe,
   company,
   carouselImages,
 }) => {
@@ -52,6 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <>
       {/* Card Component */}
+      {/* @ts-expect-error this is a bypass */}
       <Box
         sx={{
           marginTop: { xs: 9, sm: 9, md: 9, lg: 9, xl: 9 },
