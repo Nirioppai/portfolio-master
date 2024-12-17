@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Box,
   Grid,
+  Button,
   Typography,
   Link,
   IconButton,
@@ -19,7 +20,7 @@ import StarIcon from '@mui/icons-material/Star';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Experience, FadeInComponent, Projects } from '../../../components';
+import { Experience, FadeInComponent, ProjectCard } from '../../../components';
 
 type SectionId = string;
 
@@ -101,6 +102,43 @@ function MainPage() {
       label: 'System Automation',
       url: 'https://www.ibm.com/docs/en/tsaam/4.1.0?topic=overview-system-automation',
     },
+  };
+
+  const projects = [
+    {
+      backgroundImage:
+        'https://via.placeholder.com/1200x600?text=Project+Image',
+      title: 'Spotify Profile',
+      description:
+        'Web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track.',
+      link: 'https://spotify-profile-example.com',
+      chips: [
+        { label: 'React', url: 'https://reactjs.org/' },
+        { label: 'Express', url: 'https://expressjs.com/' },
+        { label: 'Spotify API', url: 'https://developer.spotify.com/' },
+        { label: 'Heroku', url: 'https://www.heroku.com/' },
+      ],
+      timeframe: '2024',
+      company: 'My Portfolio',
+      carouselImages: [
+        {
+          title: 'Image 1',
+          url: 'https://via.placeholder.com/800x400?text=Image+1',
+        },
+        {
+          title: 'Image 2',
+          url: 'https://via.placeholder.com/800x400?text=Image+2',
+        },
+      ],
+    },
+  ];
+
+  const handleDownload = () => {
+    // Trigger download of resume.pdf from the public directory
+    const link = document.createElement('a');
+    link.href = `${process.env.PUBLIC_URL}/resume.pdf`;
+    link.download = 'resume.pdf';
+    link.click();
   };
 
   return (
@@ -441,11 +479,44 @@ function MainPage() {
                     ]}
                   />
                 </Grid>
-                View Full Resume
+                <Box
+                  display='flex'
+                  alignItems='center'
+                  justifyContent='space-between'
+                  mt={2}
+                  mb={2}
+                >
+                  <Typography
+                    variant='h6'
+                    sx={{ fontSize: '16px', fontWeight: 'bold' }}
+                  >
+                    View Full Resume
+                  </Typography>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={handleDownload}
+                    sx={{ fontSize: '16px', textTransform: 'none' }}
+                  >
+                    Download
+                  </Button>
+                </Box>
               </Box>
 
               <Box id='projects' sx={{ marginTop: 10 }}>
-                <Projects />
+                {projects.map((project, index) => (
+                  <ProjectCard
+                    key={index}
+                    backgroundImage={project.backgroundImage}
+                    title={project.title}
+                    description={project.description}
+                    link={project.link}
+                    chips={project.chips}
+                    timeframe={project.timeframe}
+                    company={project.company}
+                    carouselImages={project.carouselImages}
+                  />
+                ))}
               </Box>
             </Grid>
 

@@ -6,7 +6,7 @@ import { Box, Grid, Typography, Chip, BoxProps } from '@mui/material';
  */
 interface ChipItem {
   label: string; // The text label for the chip
-  url: string;   // The URL to redirect to on click
+  url: string; // The URL to redirect to on click
 }
 
 /**
@@ -71,7 +71,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           {chips.map((chip, index) => (
             <Chip
               key={index}
-              sx={{ padding: '3px', marginRight: 1, marginBottom: 2, cursor: 'pointer' }}
+              sx={{
+                padding: '3px',
+                marginRight: 1,
+                marginBottom: 2,
+                cursor: 'pointer',
+              }}
               label={chip.label} // Use chip label
               onClick={() => window.open(chip.url, '_blank')} // Open the chip URL in a new tab
               clickable

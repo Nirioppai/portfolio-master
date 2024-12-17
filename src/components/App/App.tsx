@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { theme } from './theme';
 
-import { APP_NAME } from '../../constants';
+import { APP_NAME, ENV } from '../../constants';
 import { AppRoutes } from '../../routes';
 
 const queryClient = new QueryClient({
@@ -56,7 +56,7 @@ const App = () => {
                 <AppRoutes />
               </BrowserRouter>
 
-              <ReactQueryDevtools />
+              {ENV === 'dev' && <ReactQueryDevtools />}
             </QueryClientProvider>
           </SnackbarProvider>
         </HelmetProvider>
