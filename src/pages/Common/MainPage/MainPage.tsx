@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {
   Box,
-  Chip,
   Grid,
   Typography,
   Link,
@@ -20,7 +19,7 @@ import StarIcon from '@mui/icons-material/Star';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Experience, FadeInComponent } from '../../../components';
+import { Experience, FadeInComponent, Projects } from '../../../components';
 
 type SectionId = string;
 
@@ -58,6 +57,51 @@ function MainPage() {
     // Cleanup the event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, [isLgOrXl]);
+
+  const skillList = {
+    robotFramework: {
+      label: 'Robot Framework',
+      url: 'https://robotframework.org/',
+    },
+    jenkins: { label: 'Jenkins', url: 'https://www.jenkins.io/' },
+    jmeter: { label: 'JMeter', url: 'https://jmeter.apache.org/' },
+    automationTesting: {
+      label: 'Automation Testing',
+      url: 'https://www.globalapptesting.com/blog/what-is-automation-testing',
+    },
+    agile: {
+      label: 'Agile',
+      url: 'https://asana.com/resources/agile-methodology',
+    },
+    gitLab: { label: 'GitLab', url: 'https://gitlab.com/' },
+    react: { label: 'React.js', url: 'https://reactjs.org/' },
+    typeScript: { label: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+    reactQuery: { label: 'React Query', url: 'https://tanstack.com/query/' },
+    frontendDev: {
+      label: 'Frontend Development',
+      url: 'https://en.wikipedia.org/wiki/Front-end_web_development',
+    },
+    uiux: {
+      label: 'UI/UX',
+      url: 'https://flatironschool.com/blog/what-is-ux-ui-design/',
+    },
+    codeOptimization: {
+      label: 'Code Optimization',
+      url: 'https://www.quora.com/What-exactly-does-code-optimization-mean',
+    },
+    laravel: { label: 'Laravel', url: 'https://laravel.com/' },
+    bootstrap: { label: 'Bootstrap', url: 'https://getbootstrap.com/' },
+    sql: { label: 'SQL', url: 'https://www.mysql.com/' },
+    heroku: { label: 'Heroku', url: 'https://www.heroku.com/' },
+    fullStackDev: {
+      label: 'Full Stack Development',
+      url: 'https://www.mongodb.com/resources/basics/full-stack-development',
+    },
+    systemAutomation: {
+      label: 'System Automation',
+      url: 'https://www.ibm.com/docs/en/tsaam/4.1.0?topic=overview-system-automation',
+    },
+  };
 
   return (
     <>
@@ -117,8 +161,8 @@ function MainPage() {
 
                 <Grid item xs={9}>
                   <Typography paragraph sx={{ maxWidth: 'xs' }}>
-                    I develop functional web pages and reusable components, and
-                    I also design automated test cases for web applications.
+                    I develop functional web pages and reusable components, as
+                    well as design automated test cases for web applications.
                   </Typography>
                 </Grid>
 
@@ -153,16 +197,22 @@ function MainPage() {
                       </ListItemIcon>
                       <ListItemText primary='Experience' />
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={() => handleScroll('projects')}>
                       <ListItemIcon>
                         <RocketLaunchIcon />
                       </ListItemIcon>
                       <ListItemText primary='Projects' />
                     </ListItemButton>
+                    <ListItemButton onClick={() => handleScroll('getintouch')}>
+                      <ListItemIcon>
+                        <RocketLaunchIcon />
+                      </ListItemIcon>
+                      <ListItemText primary='Get in Touch' />
+                    </ListItemButton>
                   </List>
                 </Grid>
 
-{/* Icons */}
+                {/* Icons */}
                 <Grid
                   item
                   xs={12}
@@ -183,17 +233,19 @@ function MainPage() {
                   }}
                 >
                   <IconButton
-                    component="a"
-                    href="https://github.com/Nirioppai"
-                    target="_blank" // Opens in a new tab
-                    rel="noopener noreferrer">
+                    component='a'
+                    href='https://github.com/Nirioppai'
+                    target='_blank' // Opens in a new tab
+                    rel='noopener noreferrer'
+                  >
                     <GitHubIcon />
                   </IconButton>
                   <IconButton
-                  component="a"
-                  href="https://www.linkedin.com/in/nico-del-rosario-a84281211/"
-                  target="_blank" // Opens in a new tab
-                  rel="noopener noreferrer">
+                    component='a'
+                    href='https://www.linkedin.com/in/nico-del-rosario-a84281211/'
+                    target='_blank' // Opens in a new tab
+                    rel='noopener noreferrer'
+                  >
                     <LinkedInIcon />
                   </IconButton>
                 </Grid>
@@ -243,7 +295,7 @@ function MainPage() {
                   📖reading, or playing the 🎹piano.
                 </Typography>
               </Box>
-              <Box id='experience'>
+              <Box id='experience' sx={{ marginTop: 20 }}>
                 <Grid item xs={12}>
                   <Box>
                     <Typography
@@ -261,67 +313,139 @@ function MainPage() {
                     </Typography>
                   </Box>
 
-                  <Experience 
-        timeframe="06/2024 - Present"
-        title="QA Consultant"
-        company="World Bank Group"
-        description="Spearheaded comprehensive automation testing strategies, developing robust workflows for smoke and regression testing using Jenkins and Robot Framework. Engineered performance testing scripts with JMeter to enhance system reliability and validate application performance."
-        chips={['Robot Framework', 'Jenkins', 'JMeter', 'Automation Testing']}
-      />
+                  <Experience
+                    timeframe='06 2024 - Present'
+                    title='QA Consultant'
+                    company='The World Bank Group'
+                    description='Spearheaded comprehensive automation testing strategies, developing robust workflows for smoke and regression testing using Jenkins and Robot Framework. Engineered performance testing scripts with JMeter to enhance system reliability and validate application performance.'
+                    chips={[
+                      skillList.agile,
+                      skillList.automationTesting,
+                      skillList.gitLab,
+                      skillList.jenkins,
+                      skillList.jmeter,
+                      skillList.robotFramework,
+                      skillList.systemAutomation,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="09/2023 - 06/2024"
-        title="Project Technical Specialist III - Automation Test Engineer"
-        company="Philippine Institute of Volcanology and Seismology"
-        description="Transformed R&D division's workflow by integrating Agile methodologies and GitLab, significantly improving project efficiency. Developed comprehensive automation testing frameworks for critical platforms including Plansmart for Safe Schools and El Nino Online Platform. Conducted performance testing to enhance application stability and reliability."
-        chips={['Robot Framework', 'Jenkins', 'JMeter', 'Agile', 'GitLab']}
-      />
+                  <Experience
+                    timeframe='09 2023 - Present'
+                    title='Project Technical Specialist III - Automation Test Engineer'
+                    company='Philippine Institute of Volcanology and Seismology'
+                    description="Transformed R&D division's workflow by integrating Agile methodologies and GitLab, significantly improving project efficiency. Developed comprehensive automation testing frameworks for critical platforms including Plansmart for Safe Schools, Ready to Rebuild, and El Nino Online Platform. Conducted performance testing to enhance application stability and reliability."
+                    chips={[
+                      skillList.agile,
+                      skillList.automationTesting,
+                      skillList.gitLab,
+                      skillList.jenkins,
+                      skillList.jmeter,
+                      skillList.robotFramework,
+                      skillList.systemAutomation,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="11/2022 - 09/2023"
-        title="Frontend Developer"
-        company="Stack Educational Technologies"
-        description="Developed and maintained mission-critical web applications for educational systems, including a Finance System, Learning Management System, and Admission System. Worked in an Agile-driven environment, ensuring timely project delivery and adherence to internal risk control guidelines."
-        chips={['React.js', 'TypeScript', 'Agile Methodology']}
-      />
+                  <Experience
+                    timeframe='11 2022 - 09 2023'
+                    title='Frontend Developer'
+                    company='Stack Educational Technologies'
+                    description='Developed and maintained mission-critical web applications for educational systems, including a Finance System, Learning Management System, and Admission System. Worked in an Agile-driven environment, ensuring timely project delivery and adherence to internal risk control guidelines.'
+                    chips={[
+                      skillList.react,
+                      skillList.reactQuery,
+                      skillList.typeScript,
+                      skillList.agile,
+                      skillList.uiux,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="09/2022 - 10/2022"
-        title="Intern Frontend Developer"
-        company="Offshorly"
-        description="Contributed to the revitalization of an NFT application by enhancing the home page design, implementing intuitive search functionality with advanced filters, and optimizing front-end code for improved performance and maintainability."
-        chips={['Frontend Development', 'UI/UX', 'Code Optimization']}
-      />
+                  <Experience
+                    timeframe='09 2022 - 10 2022'
+                    title='Intern Frontend Developer'
+                    company='Offshorly'
+                    description='Contributed to the revitalization of an NFT application by enhancing the home page design, implementing intuitive search functionality with advanced filters, and optimizing front-end code for improved performance and maintainability.'
+                    chips={[
+                      skillList.agile,
+                      skillList.codeOptimization,
+                      skillList.frontendDev,
+                      skillList.react,
+                      skillList.typeScript,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="09/2022 - 09/2022"
-        title="Freelance Frontend Developer"
-        description="Developed a Facility and Equipment Lending System using React.js and TypeScript, creating responsive and modern frontend layouts with React Query for efficient state management."
-        chips={['React.js', 'TypeScript', 'React Query']}
-      />
+                  <Experience
+                    timeframe='09 2022 - 09 2022'
+                    title='Freelance Frontend Developer'
+                    description='Developed a Facility and Equipment Lending System using React.js and TypeScript, creating responsive and modern frontend layouts with React Query for efficient state management.'
+                    chips={[
+                      skillList.react,
+                      skillList.reactQuery,
+                      skillList.typeScript,
+                      skillList.uiux,
+                      skillList.fullStackDev,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="05/2022 - 08/2022"
-        title="Freelance Frontend Developer"
-        description="Created an Attendance Monitoring System using React.js and TypeScript, focusing on responsive design and efficient data management with React Query."
-        chips={['React.js', 'TypeScript', 'React Query']}
-      />
+                  <Experience
+                    timeframe='05 2022 - 08 2022'
+                    title='Freelance Frontend Developer'
+                    description='Created an Attendance Monitoring System using React.js and TypeScript, focusing on responsive design and efficient data management with React Query.'
+                    chips={[
+                      skillList.react,
+                      skillList.reactQuery,
+                      skillList.typeScript,
+                      skillList.uiux,
+                      skillList.fullStackDev,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="04/2022 - 08/2022"
-        title="Freelance Full Stack Developer"
-        description="Developed a comprehensive Gym Management System using Laravel, creating responsive layouts and implementing robust backend functionality with SQL database integration and Heroku deployment."
-        chips={['Laravel', 'Bootstrap', 'SQL', 'Heroku']}
-      />
+                  <Experience
+                    timeframe='04 2022 - 08 2022'
+                    title='Freelance Full Stack Developer'
+                    description='Developed a comprehensive Gym Management System using Laravel, creating responsive layouts and implementing robust backend functionality with SQL database integration and Heroku deployment.'
+                    chips={[
+                      skillList.bootstrap,
+                      skillList.fullStackDev,
+                      skillList.heroku,
+                      skillList.laravel,
+                      skillList.sql,
+                      skillList.uiux,
+                    ]}
+                  />
 
-      <Experience 
-        timeframe="11/2019 - 11/2021"
-        title="Full Stack Web Developer"
-        company="Xavier School San Juan"
-        description="Engineered two pivotal systems: the OLSAT Monitoring System, which automated workflows and increased efficiency by 80%, and the Dynamic Queueing System, which transformed the school's enrollment process."
-        chips={['Full Stack Development', 'System Automation']}
-      />
+                  <Experience
+                    timeframe='11 2019 - 11 2021'
+                    title='Frontend Developer'
+                    company='Stack Educational Technologies'
+                    description='Built and enhanced web applications for organizational systems, focusing on responsive design, improved navigation, and modern visuals. Key projects include a Finance System, where I developed responsive frontend features; a Learning Management System, where I contributed as both a Frontend Developer and Product Manager; and an Admission System, where I implemented core frontend functionalities. I collaborated in an Agile-driven environment, adhering to risk control and quality standards.'
+                    chips={[
+                      skillList.react,
+                      skillList.typeScript,
+                      skillList.uiux,
+                      skillList.agile,
+                    ]}
+                  />
+
+                  <Experience
+                    timeframe='09 2019 - 09 2021'
+                    title='Full Stack Web Developer'
+                    company='Xavier School San Juan'
+                    description="Engineered two pivotal systems: the OLSAT Monitoring System, which automated workflows and increased efficiency by 80%, and the Dynamic Queueing System, which transformed the school's enrollment process."
+                    chips={[
+                      skillList.bootstrap,
+                      skillList.fullStackDev,
+                      skillList.heroku,
+                      skillList.laravel,
+                      skillList.sql,
+                      skillList.uiux,
+                    ]}
+                  />
                 </Grid>
+                View Full Resume
+              </Box>
+
+              <Box id='projects' sx={{ marginTop: 10 }}>
+                <Projects />
               </Box>
             </Grid>
 
