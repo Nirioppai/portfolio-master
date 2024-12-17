@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 
 import InfoIcon from '@mui/icons-material/Info';
+import EmailIcon from '@mui/icons-material/Email';
 import StarIcon from '@mui/icons-material/Star';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -287,7 +288,7 @@ function MainPage() {
                     </ListItemButton>
                     <ListItemButton onClick={() => handleScroll('getintouch')}>
                       <ListItemIcon>
-                        <RocketLaunchIcon />
+                        <EmailIcon />
                       </ListItemIcon>
                       <ListItemText primary='Get in Touch' />
                     </ListItemButton>
